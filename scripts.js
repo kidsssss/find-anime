@@ -11,7 +11,6 @@ findBtn.addEventListener("click", findAnime);
 async function getAnime(animeUrl) {
   const res = await fetch(`${moeUrl}${animeUrl}`);
   const animeData = await res.json();
-
   showData(animeData);
 }
 
