@@ -3,12 +3,14 @@ const animeUrlInput = document.getElementById("anime-url");
 const resultAll = document.getElementById("result-container");
 const imgContainer = document.getElementById("img-container");
 const animeUrl = document.getElementById("anime-url");
+const waitingDiv = document.getElementById("waiting");
 
 const moeUrl = "https://trace.moe/api/search?url=";
 
 findBtn.addEventListener("click", findAnime);
 
 async function getAnime(animeUrl) {
+  prepareForResult();
   const res = await fetch(`${moeUrl}${animeUrl}`);
   const animeData = await res.json();
   showData(animeData);
@@ -21,9 +23,8 @@ function findAnime() {
 }
 
 function showData(animeData) {
-  const url = animeUrl.value;
+  waitingDiv.className = "hide";
   //console.log(animeData);
-  imgContainer.innerHTML = `<img src="${url}">`;
   resultAll.innerHTML = "<h2>Here is what we found</h2>";
   if ("docs" in animeData) {
     animeData.docs.forEach((anime) => {
@@ -64,4 +65,11 @@ function getTimestamp(num) {
   var mDisplay = m < 10 ? `0${m}` : `${m}`;
   var sDisplay = s < 10 ? `0${s}` : `${s}`;
   return `Timestamp: ${hDisplay}:${mDisplay}:${sDisplay}`;
+}
+
+function prepareForResult() {
+  const url = animeUrl.value;
+  imgContainer.innerHTML = `<img src="${url}">`;
+  waitingDiv.className = "show";
+  resultAll.innerHTML = "";
 }

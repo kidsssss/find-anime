@@ -1,5 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -10,8 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* color: #eeeeee; */
-  color: #f9f9f9;
+  color: #dedede;
 }
 
 a {
@@ -37,7 +39,9 @@ a {
 }
 
 .img-container img {
-  width: 320px;
+  display: block;
+  margin: auto;
+  width: auto;
   height: 180px;
 }
 
@@ -75,6 +79,18 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#waiting {
+  text-align: center;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
 .result {
